@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-  <h1> ddd</h1>
+    <title>Home Page</title>
 </head>
 <body>
-
+    <h1>Welcome to WMS</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'zone_list' %}">Zones</a></li>
+            <li><a href="{% url 'zone_detail' %}">Zones</a></li>
+            <li><a href="{% url 'cell_list' %}">Cells</a></li>
+        </ul>
+    </nav>
 </body>
 </html>

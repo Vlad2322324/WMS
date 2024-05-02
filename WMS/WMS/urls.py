@@ -16,9 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import index_page
+
+from main import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page),
+
+
+
+
+
+    path('cells/', views.cell_list, name='cell_list'),
+    path('cells/add/', views.add_cell, name='add_cell'),
+    path('zones/', views.zone_list, name='zone_list'),
+    path('zones/add/', views.add_zone, name='add_zone'),
 ]

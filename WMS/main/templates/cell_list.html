@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cell List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список ячеек</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Cell List</h1>
-    <ul>
-    {% for cell in cells %}
-        <li>{{ cell }}</li>
-    {% endfor %}
-    </ul>
-    <a href="{% url 'add_cell' %}">Add Cell</a>
+    <div class="container">
+        <h1>Список ячеек</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Идентификатор ячейки</th>
+                    <th>Полка</th>
+                    <th>Паллета</th>
+                    <th>Зона</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cell in cells %}
+                <tr>
+                    <td>{{ cell.cell_id }}</td>
+                    <td>{{ cell.shelf }}</td>
+                    <td>{{ cell.pallet }}</td>
+                    <td>{{ cell.zone }}</td>
+                    <td>{{ cell.status }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="{% url 'add_cell' %}">Добавить ячейку</a>
+    </div>
+    <!-- Подключаем скрипты Bootstrap (jQuery и Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

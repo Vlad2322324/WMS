@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список Зон</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Список Зон</h1>
-    <table border="1">
-        <tr>
-            <th>ID Зоны</th>
-            <th>Тип</th>
-        </tr>
-        {% for zone in zones %}
-        <tr>
-            <td>{{ zone.zone_id }}</td>
-            <td>{{ zone.type }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <a href="{% url 'add_zone' %}">Добавить Зону</a>
+    <div class="container">
+        <h1>Список Зон</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID Зоны</th>
+                    <th>Тип</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zone in zones %}
+                <tr>
+                    <td>{{ zone.zone_id }}</td>
+                    <td>{{ zone.type }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a class="btn btn-primary" href="{% url 'add_zone' %}">Добавить Зону</a>
+    </div>
+    <!-- Подключаем скрипты Bootstrap (jQuery и Popper.js) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

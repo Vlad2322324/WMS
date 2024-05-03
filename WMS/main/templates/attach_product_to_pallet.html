@@ -1,0 +1,28 @@
+<!-- В файле attach_product_to_pallet.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attach Product to Pallet</title>
+</head>
+<body>
+    <h1>Attach Product to Pallet</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="product_id">Product ID:</label>
+        <input type="text" id="product_id" name="product_id"><br>
+        <label for="delivery_id">Delivery ID:</label>
+        <input type="text" id="delivery_id" name="delivery_id"><br>
+        <label for="pallet_id">Pallet ID:</label>
+        <input type="text" id="pallet_id" name="pallet_id"><br>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity"><br>
+        <button type="submit">Attach</button>
+    </form>
+</body>
+</html>

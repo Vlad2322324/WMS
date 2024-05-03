@@ -1,0 +1,24 @@
+<!-- В файле attach_pallet_to_cell.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attach Pallet to Cell</title>
+</head>
+<body>
+    <h1>Attach Pallet to Cell</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="pallet_id">Pallet ID:</label>
+        <input type="text" id="pallet_id" name="pallet_id"><br>
+        <label for="cell_id">Cell ID:</label>
+        <input type="text" id="cell_id" name="cell_id"><br>
+        <button type="submit">Attach</button>
+    </form>
+</body>
+</html>

@@ -1,13 +1,34 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
 
 class SupplierDirectory(models.Model):
     supplier = models.BigIntegerField(primary_key=True)
-    name = models.TextField()  # This field type is a guess.
+    name = models.TextField()
 
     class Meta:
         managed = False
         db_table = ' Supplier directory'
+    def __str__(self):
+        return f"{self.name} - {self.supplier}"
+
+
+class AcceptancePlan(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    delivery = models.ForeignKey('PurchaseOrder', models.DO_NOTHING, db_column='delivery id', blank=True, null=True)  # Изменение названия поля
+    cell = models.ForeignKey('Cell', models.DO_NOTHING, db_column='cell', blank=True, null=True)
+    product_id = models.BigIntegerField(db_column='product id', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Acceptance_plan'
+
 
 
 class Cell(models.Model):
@@ -33,14 +54,14 @@ class Pallet(models.Model):
 class ProductDirectory(models.Model):
     product_id = models.BigIntegerField(db_column='product id', primary_key=True)  # Field renamed to remove unsuitable characters.
     barcod = models.BigIntegerField()
-    expiration_date = models.BigIntegerField(db_column='expiration date')  # Field renamed to remove unsuitable characters.
-    weight = models.BigIntegerField()
-    name = models.TextField(db_column='Name')  # Field name made lowercase. This field type is a guess.
-    storage_type = models.TextField(db_column='storage type')  # Field renamed to remove unsuitable characters. This field type is a guess.
+    name = models.TextField(db_column='Name')  # Field name made lowercase.
+    storage_type = models.TextField(db_column='storage type')  # Field renamed to remove unsuitable characters.
 
     class Meta:
         managed = False
         db_table = 'Product_directory'
+    def __str__(self):
+        return f"{self.name} - {self.product_id}"
 
 
 class ProductOnPallet(models.Model):
@@ -65,18 +86,30 @@ class PurchaseOrder(models.Model):
         managed = False
         db_table = 'Purchase_order'
         unique_together = (('product_id', 'delivery_id'),)
+    def __str__(self):
+        return f"{self.product_id} - {self.delivery_id}"
 
+
+class GoodsReceipt(models.Model):
+    product_id = models.BigIntegerField(db_column='product_id')
+    delivery_id = models.BigIntegerField(db_column='delivery_id')
+    quantity = models.BigIntegerField()
+    status = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'Goods_receipt'
 
 class Zone(models.Model):
     zone_id = models.BigIntegerField(db_column='zone id', primary_key=True)  # Field renamed to remove unsuitable characters.
-
-    type = models.TextField(blank=True, null=True)  # This field type is a guess.
+    type = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'Zone'
 
-
+    def __str__(self):
+        return f"{self.zone_id} - {self.type}"
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 

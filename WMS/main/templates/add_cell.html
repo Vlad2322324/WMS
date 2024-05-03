@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Cell</title>
+    <title>Добавить Ячейку</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Add Cell</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add</button>
-    </form>
+    <div class="container">
+        <h1 class="mt-4">Добавить Ячейку</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <!-- Каждый элемент формы будет отображаться в виде строки -->
+            {{ form.as_p }}
+            <!-- Кнопка для отправки формы -->
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+
+    <!-- Подключение Bootstrap JS (необходимо для работы компонентов, например, кнопок) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
